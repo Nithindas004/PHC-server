@@ -1,6 +1,8 @@
 const express = require("express")
 const bcrypt= require("bcryptjs")
 const ashaworkerModel= require("../models/ashaworkersModel")
+const addhousemodel=require("../models/addcommondetailsModel")
+const personaldetailsmodel= require("../models/personaldetails")
 
 const router= express.Router()
 
@@ -24,6 +26,25 @@ router.post("/addashaworker",async(req,res)=>{
         }
     )
 
+})
+
+router.get("/viewashaworkers",async(req,res)=>{
+    let data= await ashaworkerModel.find()
+    res.json(data)
+})
+
+
+
+router.get("/view",async(req,res)=>{
+    let data=await addhousemodel.find()
+    .populate("addedby","name -_id").exec()
+    res.json(data)
+})
+
+router.post("/viewpersonal",async(req,res)=>{
+    let input = req.body
+    let data= await personaldetailsmodel.find(input)
+    res.json(data)
 })
 
 module.exports=router
