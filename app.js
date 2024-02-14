@@ -3,6 +3,7 @@ const cors= require("cors")
 const mongoose = require("mongoose")
 
 const AdminRoute= require("./controller/adminRuter")
+const ashaworkerRoute = require("./controller/ashaworkerRouter")
 
 const app = express()
 
@@ -13,6 +14,7 @@ mongoose.connect("mongodb+srv://nithindas1234:1234nith@cluster0.lvn9hia.mongodb.
 {useNewUrlParser: true})
 
 app.use("/phc/admin",AdminRoute)
+app.use("/phc/ashaworkers",ashaworkerRoute)
 
 app.listen(3001,()=>{
     console.log("Server Running")

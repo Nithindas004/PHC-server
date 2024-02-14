@@ -1,0 +1,48 @@
+const mongoose=require("mongoose")
+
+const adddetailsSchema= new mongoose.Schema(
+    {
+        namehouseowner:{
+            type:String,
+            required:true
+        },
+        houseno:{
+            type:String,
+            required:true
+        },
+        housename:{
+            type:String,
+            required:true
+        },
+        phone:{
+            type:String,
+            required:true
+        },
+        salary:{
+            type:String,
+            required:true
+        },
+        rationcardtype:{
+            type:String,
+            required:true
+        },
+        watersource:{
+            type:String,
+            required:true
+        },
+        wastedisposal:{
+            type:String,
+            required:true
+        },
+        noofemployees:{
+            type:String,
+            required:true
+        },
+        addedby:{
+            type:mongoose.Schema.Types.ObjectId,
+            required:true,
+            ref:"ashaworkers"
+        }
+    }
+)
+module.exports=mongoose.model("hosedetails",adddetailsSchema)
