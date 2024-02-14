@@ -33,6 +33,18 @@ router.get("/viewashaworkers",async(req,res)=>{
     res.json(data)
 })
 
+router.post("/searchworkers",async(req,res)=>{
+    let input=req.body
+    let data = await ashaworkerModel.find(input)
+    res.json(data)
+})
+
+router.post("/searchperson",async(req,res)=>{
+    let input=req.body
+    let data = await addhousemodel.find(input)
+    res.json(data)
+})
+
 
 
 router.get("/view",async(req,res)=>{
