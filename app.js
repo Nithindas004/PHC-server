@@ -16,6 +16,6 @@ mongoose.connect("mongodb+srv://nithindas1234:1234nith@cluster0.lvn9hia.mongodb.
 app.use("/phc/admin",AdminRoute)
 app.use("/phc/ashaworkers",ashaworkerRoute)
 
-app.listen(3001,()=>{
+app.listen(3002,()=>{
     console.log("Server Running")
 })

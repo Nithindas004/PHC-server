@@ -10,15 +10,16 @@ const router=express.Router()
 router.post("/login",async(req,res)=>{
     let ephone= req.body.phone
     let epass= req.body.password
-    let data = await ashaworkerModel.findOne({"phone":ephone})
-    if (!data) {
+    let dbdata = await ashaworkerModel.findOne({"phone":ephone})
+    //console.log(dbdata)
+    if (!dbdata) {
         return res.json(
             {
                 status:"invalid user"
             }
         )
     }
-    let dbpass=data.password
+    let dbpass=dbdata.password
     const match=await bcrypt.compare(epass,dbpass)
     if(!match)
     {
@@ -28,12 +29,14 @@ router.post("/login",async(req,res)=>{
             }
         )
     }
-    res.json(
+    else{
+        return res.json(
         {
-            status:"success"
+            status:"success",
+            "userData":dbdata
         }
     )
-
+    }
 })
 
 router.post("/adddetails",async(req,res)=>{
